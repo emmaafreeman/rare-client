@@ -25,7 +25,7 @@ export const PostDetail = () => {
                 <CommentList postId = {parseInt(postId)}/>
             </div>
             <button onClick={() => {
-                history.push(`/posts/edit/${post.id}`)}}>Edit</button>
+                history.push(`/posts/edit/${post.id}`)}}>Edit </button>
         </div>
     )
 }
