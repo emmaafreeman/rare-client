@@ -22,7 +22,11 @@ export const Register = (props) => {
                 "password": password.current.value
             }
 
+<<<<<<< HEAD
             return fetch("http://127.0.0.1:8001/register", {
+=======
+            return fetch("http://127.0.0.1:8000/register", {
+>>>>>>> 9b112541a3601b970e36b58299226c9f86cb4051
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
