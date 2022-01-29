@@ -19,7 +19,8 @@ export const Register = (props) => {
                 "first_name": firstName.current.value,
                 "last_name": lastName.current.value,
                 "email": email.current.value,
-                "password": password.current.value
+                "password": password.current.value,
+                "bio": bio.current.value
             }
 
             return fetch("http://127.0.0.1:8000/register", {
@@ -71,6 +72,10 @@ export const Register = (props) => {
                 <fieldset>
                     <label htmlFor="verifyPassword"> Verify Password </label>
                     <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="bio"> Bio </label>
+                    <input ref={bio} type="text" name="bio" className="form-control" placeholder="Bio" required />
                 </fieldset>
                 <fieldset style={{
                     textAlign: "center"
