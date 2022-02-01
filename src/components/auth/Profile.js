@@ -1,13 +1,13 @@
 import React, { useEffect, useContext } from "react"
-import { EventContext } from "../event/EventProvider.js"
-import { HumanDate } from "../utils/HumanDate.js"
+// import { EventContext } from "../event/EventProvider.js"
+// import { HumanDate } from "../utils/HumanDate.js"
 import { ProfileContext } from "./AuthProvider.js"
 import "./Profile.css"
 
 
 export const Profile = (props) => {
     const { profile, getProfile } = useContext(ProfileContext)
-    const { leaveEvent } = useContext(EventContext)
+    // const { leaveEvent } = useContext(EventContext)
 
     useEffect(() => {
         getProfile()
@@ -23,12 +23,12 @@ export const Profile = (props) => {
                     <h3>Your Info</h3>
                 </header>
                 <div className="profile__name">
-                    Welcome: {profile.gamer && profile.gamer.user.first_name} {profile.gamer && profile.gamer.user.last_name}
+                    Welcome: {profile.rareuser && profile.rareuser.user.first_name} {profile.rareuser && profile.rareuser.user.last_name}
                 </div>
-                <div className="profile__username">Username: {profile.gamer && profile.gamer.user.username}</div>
-                <div className="profile__bio">About you: {profile.gamer && profile.gamer.bio}</div>
+                <div className="profile__username">Username: {profile.rareuser && profile.rareuser.user.username}</div>
+                <div className="profile__bio">About you: {profile.rareuser && profile.rareuser.bio}</div>
             </section>
-            <section className="profile__registrations">
+            {/* <section className="profile__registrations">
                 <header className="registrations__header">
                     <h3>Your Events</h3>
                 </header>
@@ -48,14 +48,14 @@ export const Profile = (props) => {
                         })
                     }
                 </div>
-            </section>
-            <section className="profile__games">
+            </section> */}
+            {/* <section className="profile__games">
                 <header className="games__header">
                     <h3>Your Games</h3>
                 </header>
                 <div className="games">
                     {
-                        profile.gamer && profile.gamer.games.map(game => {
+                        profile.rareuser && profile.rareuser.games.map(game => {
                             return <section key={`game--${game.id}`} className="game">
                                 <div className="game__title">{game.title} by {game.maker}</div>
                                 <div className="game__players">{game.number_of_players} players needed</div>
@@ -67,7 +67,7 @@ export const Profile = (props) => {
                         })
                     }
                 </div>
-            </section>
+            </section> */}
         </article>
     )
 }
