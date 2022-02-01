@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useParams, useHistory } from "react-router"
 import { getPostById } from "./PostManager"
 import { CommentList } from "../comments/CommentList"
+import { deletePost } from "./PostManager"
 
 
 export const PostDetail = () => {
@@ -23,6 +24,8 @@ export const PostDetail = () => {
             <p className='post_detail_user'>Posted by user {post?.author?.user?.username}</p>
             <button onClick={() => {
                 history.push(`/posts/edit/${post.id}`)}}>Edit </button>
+            <button onClick={() => {   
+                deletePost(parseInt(postId)).then(history.push(`/posts`))}}>Delete </button>
              <div className='post_detail_comments'>
                 <CommentList postId = {parseInt(postId)}/>
             </div>
