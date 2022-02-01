@@ -43,3 +43,13 @@ export const editPost = post => {
   })
       .then(getPosts)
 }
+
+export const deletePost = (post_id) => {
+  return fetch(`http://localhost:8000/posts/${post_id}`, {
+      method: "DELETE",
+      headers: {
+          "Authorization": `Token ${localStorage.getItem("rare_user_id")}`,
+      }
+  })
+      .then(getPosts)
+}
