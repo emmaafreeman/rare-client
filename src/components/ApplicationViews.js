@@ -10,7 +10,8 @@ import { TagList } from "./tags/TagList"
 import { TagForm } from "./tags/TagForm"
 import { TagDetail } from "./tags/TagDetail"
 import { MyPosts } from './posts/MyPosts'
-
+import { ProfileProvider } from './auth/AuthProvider'
+import { Profile } from './auth/Profile'
 
 export const ApplicationViews = () => {
     return <>
@@ -18,6 +19,11 @@ export const ApplicationViews = () => {
             margin: "5rem 2rem",
             lineHeight: "1.75rem"
         }}>
+            <ProfileProvider>
+                <Route path='/myprofile'>
+                    <Profile />
+                </Route>
+            </ProfileProvider>
           
             <Route exact path='/categories'>
                 <CategoryList />
