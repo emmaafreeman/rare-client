@@ -9,6 +9,16 @@ export const getPosts = () => {
     .then(res => res.json())
 }
 
+export const getPostsByAuthor = (authorId) => {
+  return fetch(`http://localhost:8000/posts?${authorId}`, {
+    method: "GET",
+    headers: {
+      "Authorization": `Token ${localStorage.getItem("rare_user_id")}`,
+    }
+  })
+    .then(res => res.json())
+}
+
 export const addPost = post => {
   return fetch("http://localhost:8000/posts", {
     method: "POST",

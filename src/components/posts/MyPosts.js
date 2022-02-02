@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { getPosts } from "./PostManager";
+import React, { useEffect, useState, useContext} from "react";
+import { getPostsByAuthor } from "./PostManager";
+import { ProfileContext } from "../auth/AuthProvider";
 
 export const MyPosts = () => {
     const [posts, setPosts] = useState([])
-    // const [myPosts, setMyPosts] = useState([])
-
-    // const userId = localStorage.getItem('rare_user_id')
+    const { profile, getProfile } = useContext(ProfileContext)
+    const [authorId, setAuthorId] = useState(0)
 
     useEffect(() => {
-        getPosts().then((data) => {setPosts(data)})
+        getProfile().then(setAuthorId(profile.rareuser.user.id))
     }, [])
 
-    // useEffect(() => {
-    //     const myPosts = posts.filter(post => post.user_id === parseInt(userId))
-    //     setMyPosts(myPosts)
-    // }, [posts, userId])
+    useEffect(() => {
+        getPostsByAuthor(authorId).then((data) => {setPosts(data)})
+    }, [])
 
     return (
         <div className='myPosts'>
