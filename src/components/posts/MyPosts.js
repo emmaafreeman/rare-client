@@ -3,22 +3,22 @@ import { getPostsByAuthor } from "./PostManager";
 import { ProfileContext } from "../auth/AuthProvider";
 
 export const MyPosts = () => {
-    const [posts, setPosts] = useState([])
+    const [myPosts, setMyPosts] = useState([])
     const { profile, getProfile } = useContext(ProfileContext)
-    const [authorId, setAuthorId] = useState(0)
 
     useEffect(() => {
-        getProfile().then(setAuthorId(profile.rareuser.user.id))
+        getProfile()
     }, [])
 
     useEffect(() => {
-        getPostsByAuthor(authorId).then((data) => {setPosts(data)})
+        const authorId = profile?.rareuser?.id
+        getPostsByAuthor(authorId).then((data) => {setMyPosts(data)})
     }, [])
 
     return (
         <div className='myPosts'>
             {
-            posts.map(post => {
+            myPosts.map(post => {
                 return (
                     <div className='myPosts_post'>
                         <h3>{post?.title}</h3>
