@@ -10,7 +10,7 @@ export const getPosts = () => {
 }
 
 export const getPostsByAuthor = (authorId) => {
-  return fetch(`http://localhost:8000/posts?${authorId}`, {
+  return fetch(`http://localhost:8000/posts?authorId=${authorId}`, {
     method: "GET",
     headers: {
       "Authorization": `Token ${localStorage.getItem("rare_user_id")}`,

@@ -11,13 +11,14 @@ export const MyPosts = () => {
     }, [])
 
     useEffect(() => {
-        const authorId = profile?.rareuser?.id
-        getPostsByAuthor(authorId).then((data) => {setMyPosts(data)})
-    }, [])
+        if (profile.rareuser){
+            getPostsByAuthor(profile.rareuser.id).then((data) => {setMyPosts(data)})
+        }
+    }, [profile])
 
     return (
         <div className='myPosts'>
-            {
+            { myPosts.length > 0?
             myPosts.map(post => {
                 return (
                     <div className='myPosts_post'>
@@ -27,8 +28,7 @@ export const MyPosts = () => {
                         <p>Posted by user {post?.author?.user?.username}</p>
                     </div>
                 )
-            })
-            }
+            }) : <h3>You don't have any posts yet!</h3>}
         </div>
     )
 }
