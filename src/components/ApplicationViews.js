@@ -27,6 +27,10 @@ export const ApplicationViews = () => {
                 <Route path='/myposts'>
                     <MyPosts />
                 </Route>
+
+                <Route path='/posts/:postId(\d+)'>
+                    <PostDetail />
+                </Route>
             </ProfileProvider>
           
             <Route exact path='/categories'>
@@ -55,10 +59,6 @@ export const ApplicationViews = () => {
 
             <Route exact path='/posts'>
                 <PostList />
-            </Route>
-
-            <Route path='/posts/:postId(\d+)'>
-                <PostDetail />
             </Route>
             
             <Route exact path='/tags'>
