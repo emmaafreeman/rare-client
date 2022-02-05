@@ -12,7 +12,7 @@ export const CommentList = ({postId}) => {
   }, [])
 
   useEffect(() => {
-    const relatedComments = comments.filter(comment => comment.post_id === postId )
+    const relatedComments = comments.filter(comment => comment.post.id === postId )
     setTheComments(relatedComments)
   },[comments, postId])
 
@@ -26,7 +26,7 @@ export const CommentList = ({postId}) => {
           theComments.map(comment => {
             return <section key={comment.id}>
               <li>
-                <p>{comment.content}</p>
+                <p>{comment.content} <i><small>Posted by {comment?.author?.user?.first_name}</small></i></p>
               </li>
             </section>
           }):""
