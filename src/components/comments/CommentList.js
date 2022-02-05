@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import  {getComments} from "./CommentManager";
+import  {getComments, createNewComment} from "./CommentManager";
 
 export const CommentList = ({postId}) => {
   const [ comments, setComments] = useState([])
   const [ theComments, setTheComments] = useState([])
+  const [ comment, setComment ] = useState({})
+  const [ commentInput, setCommentInput ] = useState(false) 
   const history = useHistory()
 
   useEffect(() => {
@@ -16,6 +18,11 @@ export const CommentList = ({postId}) => {
     setTheComments(relatedComments)
   },[comments, postId])
 
+  const handleInputChange = (event) => {
+    const newComment = {...comment}
+    newComment[event.target.name] = event.target.value
+    setComment(newComment)
+  }
 
   return(
     <div>
@@ -32,7 +39,16 @@ export const CommentList = ({postId}) => {
           }):""
         }
       </ul>
-      <button>Add Comment</button>
+      <button onClick={() => {setCommentInput(!commentInput)}}>Add Comment</button>
+        {commentInput? <div><input type="text" name="content" value={comment.content} onChange={handleInputChange}/>
+                         <button onClick={() => {
+                           createNewComment({
+                             content: comment.content,
+                             postId: postId
+                           })
+                         }}>Submit Comment</button>
+
+                       </div> : ""}
     </div>
   )
 }
