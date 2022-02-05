@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import  {getComments, createNewComment} from "./CommentManager";
 
 export const CommentList = ({postId}) => {
@@ -7,7 +6,6 @@ export const CommentList = ({postId}) => {
   const [ theComments, setTheComments] = useState([])
   const [ comment, setComment ] = useState({})
   const [ commentInput, setCommentInput ] = useState(false) 
-  const history = useHistory()
 
   useEffect(() => {
     getComments().then((data)=> setComments((data)))
@@ -45,7 +43,7 @@ export const CommentList = ({postId}) => {
                            createNewComment({
                              content: comment.content,
                              postId: postId
-                           })
+                           }).then(() => {getComments().then((data)=> setComments((data)))})                        
                          }}>Submit Comment</button>
 
                        </div> : ""}
