@@ -2,7 +2,7 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { CategoryList } from "./categories/CategoryList"
 import { CategoryCreate } from "./categories/CategoryCreate" 
-import { CategoryForm } from "./categories/CategoryForm"
+import { CategoryEditForm } from "./categories/CategoryEditForm"
 import { PostList } from "./posts/PostList"
 import { PostDetail } from './posts/PostDetail'
 import { PostForm } from "./posts/PostForm"
@@ -38,7 +38,7 @@ export const ApplicationViews = () => {
             </Route>
 
             <Route path='/categories/edit/:categoryId(\d+)'>
-                <CategoryForm />
+                <CategoryEditForm />
             </Route>
 
             <Route exact path='/'>

@@ -33,8 +33,8 @@ export const CategoryCreate = () => {
     }
 
     return(
-        <form className="categoryForm">
-            <h2 className="categoryForm_title">New Category</h2>
+        <form className="CategoryEditForm">
+            <h2 className="CategoryEditForm_title">New Category</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="label">Category: </label>
