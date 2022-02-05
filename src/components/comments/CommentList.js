@@ -1,11 +1,18 @@
-import React, { useEffect, useState } from "react";
-import  {getComments, createNewComment} from "./CommentManager";
+import React, { useEffect, useState, useContext } from "react";
+import  {getComments, createNewComment, deleteComment} from "./CommentManager";
+import { ProfileContext } from "../auth/AuthProvider";
 
 export const CommentList = ({postId}) => {
   const [ comments, setComments] = useState([])
   const [ theComments, setTheComments] = useState([])
   const [ comment, setComment ] = useState({})
   const [ commentInput, setCommentInput ] = useState(false) 
+
+  const { profile, getProfile } = useContext(ProfileContext)
+
+  useEffect(() => {
+      getProfile()
+  }, [])
 
   useEffect(() => {
     getComments().then((data)=> setComments((data)))
@@ -32,6 +39,8 @@ export const CommentList = ({postId}) => {
             return <section key={comment.id}>
               <li>
                 <p>{comment.content} <i><small>Posted by {comment?.author?.user?.first_name}</small></i></p>
+                {(comment?.author?.id === profile?.rareuser?.id)?<button onClick={() => {deleteComment(comment.id)
+                  .then(() => {getComments().then((data)=> setComments((data)))})}}>Delete</button>:""}
               </li>
             </section>
           }):""
