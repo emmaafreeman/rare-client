@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react"
 import { useParams, useHistory } from "react-router"
 import { getCategories, editCategories } from "./CategoryManager"
 
-export const CategoryForm = () => {
+export const CategoryEditForm = () => {
     const history = useHistory()
     
     const [categories, setCategories] = useState([])
