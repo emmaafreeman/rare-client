@@ -9,7 +9,7 @@ export const getComments = () => {
 }
 
 export const getCommentById = (id) => {
-    return fetch("http://localhost:8000/comments", {
+    return fetch(`http://localhost:8000/comments/${id}`, {
         method: "GET",
         headers: {
             "Authorization": `Token ${localStorage.getItem("rare_user_id")}`,
