@@ -36,52 +36,60 @@ export const CommentList = ({postId}) => {
         { 
         theComments.length > 0?
           theComments.map(comment => {
-            return <section key={comment.id}>
+            return (
+            <section key={comment.id}>
               <li>
                 <p>{comment.content} <i><small>Posted by {comment?.author?.user?.first_name}</small></i></p>
-                {(comment?.author?.id === profile?.rareuser?.id)?
+                {
+                (comment?.author?.id === profile?.rareuser?.id)?
                 <div>
-                  
                   <button onClick={() => {deleteComment(comment.id)
                   .then(() => {getComments().then((data)=> setComments((data)))})}}>Delete
                   </button>
+
                   <button onClick={() => {getCommentById(comment.id)
                   .then((res) => {
                     setComment(res)
                     setCommentInput(true)
                   })}}>Edit
                   </button>               
-                </div>:""}
+                </div>
+                :""
+                }
               </li>
             </section>
+            )
           }):""
         }
       </ul>
 
       <button onClick={() => {setCommentInput(!commentInput)}}>Add Comment</button>
-        {commentInput? <div><input type="text" name="content" value={comment.content} onChange={handleInputChange}/>
-                         <button onClick={() => {
-                           {comment.id?
-                            editComment({
-                              id: comment.id,
-                              content: comment.content,
-                              postId: postId
-                            }).then(() => {getComments().then((data)=> setComments((data)))})
-                            .then(() => {
-                              setComment({})
-                              setCommentInput(false)
-                            })
-
-                          : createNewComment({
-                             content: comment.content,
-                             postId: postId
-                           }).then(() => {getComments().then((data)=> setComments((data)))})}
-                         }}>
-                           
-                           {comment.id?'Save Changes' : 'Submit Comment'}
-                         </button>
-
-                       </div> : ""}
+        {
+        commentInput? 
+        <div>
+          <input type="text" name="content" value={comment.content} onChange={handleInputChange}/>
+          <button onClick={() => {
+            {comment.id?
+            editComment({
+              id: comment.id,
+              content: comment.content,
+              postId: postId
+            }).then(() => {getComments().then((data)=> setComments((data)))})
+            .then(() => {
+              setComment({})
+              setCommentInput(false)
+            })
+            :createNewComment({
+              content: comment.content,
+              postId: postId
+            }).then(() => {getComments().then((data)=> setComments((data)))})
+          }
+          }}>
+            {comment.id?'Save Changes' : 'Submit Comment'}
+          </button>
+        </div> 
+        : ""
+        }
     </div>
   )
 }
