@@ -15,7 +15,8 @@ export const PostList = () => {
       <h2>Posts</h2>
       <article>
         {
-          posts.map(post => {
+          posts.filter(post => post.approved === true)
+          .map(post => {
             return <section key={post.id}>
               <ul>
                 <Link to={`/posts/${post.id}`}>{post.title}</Link><br/>

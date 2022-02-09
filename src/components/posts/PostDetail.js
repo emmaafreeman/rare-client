@@ -19,9 +19,11 @@ export const PostDetail = () => {
     return (
         <div className='post_detail'>
             <h3 className='post_detail_title'>{post.title}</h3>
-            <img src={post.image_url} alt='post_image' className='post_detail_img'/>
-            <p className='post_detail_date'>Posted on {post.publication_date}</p>
-            <p className='post_detail_user'>Posted by user {post?.author?.user?.username}</p>
+            <img src={post.image_url} alt='post_image' className='post_detail_img'/><br/>
+            <small className='post_detail_date'>Posted on {post.publication_date}</small>
+            <p className='post_detail_date'>Posted on {post.content}</p>
+            <small className='post_detail_user'>Posted by user {post?.author?.user?.username}</small><br/>
+            
             <button onClick={() => {
                 history.push(`/posts/edit/${post.id}`)}}>Edit </button>
             <button onClick={() => {   
