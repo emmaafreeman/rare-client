@@ -36,8 +36,10 @@ export const MyPosts = () => {
                   className="post_detail_title"
                   style={{ display: "flex", justifyContent: "center" }}
                 >
+
                   {post?.title}
                 </h2>
+
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <img
                     src={post?.image_url}
@@ -46,14 +48,16 @@ export const MyPosts = () => {
                     className="post_detail_img"
                   />
                 </div>
+
                 <p
                   className="post_detail_user"
                   style={{ fontSize: "15px", color: "gray" }}
-                >
                   Posted by RareUser: {post?.author?.user?.first_name}{" "}
                   {post?.author?.user?.last_name} on {post?.publication_date}
                 </p>
+
                 <p>{post?.content}</p>
+
               </div>
             </>
           );

@@ -59,7 +59,7 @@ export const CommentList = ({postId}) => {
               </li>
             </section>
             )
-          }):""
+          }):"Be the first one to leave a comment!"
         }
       </ul>
 

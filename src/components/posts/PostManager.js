@@ -19,6 +19,16 @@ export const getPostsByAuthor = (authorId) => {
     .then(res => res.json())
 }
 
+export const getUnapprovedPosts = () => {
+  return fetch("http://localhost:8000/posts/unapproved", {
+    method: "GET",
+    headers: {
+      "Authorization": `Token ${localStorage.getItem("rare_user_id")}`,
+    }
+  })
+    .then(res => res.json())
+}
+
 export const addPost = post => {
   return fetch("http://localhost:8000/posts", {
     method: "POST",
@@ -44,6 +54,18 @@ export const getPostById = (id) => {
 
 export const editPost = post => {
   return fetch(`http://localhost:8000/posts/${post.id}`, {
+    method: "PUT",
+    headers: {
+        "Authorization": `Token ${localStorage.getItem("rare_user_id")}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(post)
+  })
+      .then(getPosts)
+}
+
+export const approvePost = post => {
+  return fetch(`http://localhost:8000/posts/${post.id}/approve`, {
     method: "PUT",
     headers: {
         "Authorization": `Token ${localStorage.getItem("rare_user_id")}`,

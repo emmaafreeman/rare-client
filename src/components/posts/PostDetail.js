@@ -76,7 +76,7 @@ export const PostDetail = () => {
           Posted by RareUser: {post?.author?.user?.first_name}{" "}
           {post?.author?.user?.last_name} on {post.publication_date}
         </p>
-        <p>Descriptive text here!</p>
+        <p>{post?.content}</p>
 
         <div>
           <button style={{ marginRight: '10px'}}
@@ -97,6 +97,7 @@ export const PostDetail = () => {
           <div  style={{ fontSize: "12px", color: "blue" }} className="post_detail_comments">
             <CommentList postId={parseInt(postId)} />
           </div>
+
         </div>
       </div>
     </>

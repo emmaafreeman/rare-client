@@ -14,6 +14,7 @@ import { ProfileProvider } from "./auth/AuthProvider";
 import { Profile } from "./auth/Profile";
 import { RareUserProvider } from "./rareusers/RareUserProvider";
 import { RareUserList } from "./rareusers/RareUserList";
+import { UnapprovedPostsList } from "./posts/UnapprovedPostsList"
 
 export const ApplicationViews = () => {
   return (
@@ -42,6 +43,7 @@ export const ApplicationViews = () => {
               <RareUserList />
             </Route>
           </RareUserProvider>
+
         </ProfileProvider>
 
         <Route exact path="/categories">
@@ -59,6 +61,10 @@ export const ApplicationViews = () => {
         <Route exact path="/">
           <PostList />
         </Route>
+
+        <Route exact path="/posts/unapproved">
+            <UnapprovedPostsList />
+          </Route>
 
         <Route exact path="/posts/create">
           <PostForm />
