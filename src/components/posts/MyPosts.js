@@ -1,34 +1,66 @@
-import React, { useEffect, useState, useContext} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { getPostsByAuthor } from "./PostManager";
 import { ProfileContext } from "../auth/AuthProvider";
 
 export const MyPosts = () => {
-    const [myPosts, setMyPosts] = useState([])
-    const { profile, getProfile } = useContext(ProfileContext)
+  const [myPosts, setMyPosts] = useState([]);
+  const { profile, getProfile } = useContext(ProfileContext);
 
-    useEffect(() => {
-        getProfile()
-    }, [])
+  useEffect(() => {
+    getProfile();
+  }, []);
 
-    useEffect(() => {
-        if (profile.rareuser){
-            getPostsByAuthor(profile.rareuser.id).then((data) => {setMyPosts(data)})
-        }
-    }, [profile])
+  useEffect(() => {
+    if (profile.rareuser) {
+      getPostsByAuthor(profile.rareuser.id).then((data) => {
+        setMyPosts(data);
+      });
+    }
+  }, [profile]);
 
-    return (
-        <div className='myPosts'>
-            { myPosts.length > 0?
-            myPosts.map(post => {
-                return (
-                    <div className='myPosts_post'>
-                        <h3>{post?.title}</h3>
-                        <img src={post?.image_url} alt='post_image'/>
-                        <p>Posted on {post?.publication_date}</p>
-                        <p>Posted by user {post?.author?.user?.username}</p>
-                    </div>
-                )
-            }) : <h3>You don't have any posts yet!</h3>}
-        </div>
-    )
-}
+  return (
+    <div className="myPosts">
+      {myPosts.length > 0 ? (
+        myPosts.map((post) => {
+          return (
+            <>
+              <div
+                style={{
+                  border: "1px solid lightgray",
+                  padding: ".5em 2em",
+                  margin: "-2em 6em",
+                }}
+              >
+                <h1>My Posts</h1>
+                <h2
+                  className="post_detail_title"
+                  style={{ display: "flex", justifyContent: "center" }}
+                >
+                  {post.title}
+                </h2>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <img
+                    src={post.image_url}
+                    style={{ maxHeight: "350px", justifyContent: "center" }}
+                    alt="post_image"
+                    className="post_detail_img"
+                  />
+                </div>
+                <p
+                  className="post_detail_user"
+                  style={{ fontSize: "15px", color: "gray" }}
+                >
+                  Posted by RareUser: {post?.author?.user?.first_name}{" "}
+                  {post?.author?.user?.last_name} on {post.publication_date}
+                </p>
+                <p>Descriptive text here!</p>
+              </div>
+            </>
+          );
+        })
+      ) : (
+        <h3>You don't have any posts yet!</h3>
+      )}
+    </div>
+  );
+};
