@@ -45,9 +45,9 @@ export const RareUserList = () => {
     <>
     { profile?.rareuser?.user?.is_staff ?  
       <div className="userListWrapper">
-        <h2>
+        <h1>
           <b>RareUser List</b>
-        </h2>
+        </h1>
         {rareUsers.map((rareuser) => {
         return listFilter(rareuser);
       })}

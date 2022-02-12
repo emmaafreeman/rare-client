@@ -43,7 +43,7 @@ export const CommentList = ({postId}) => {
                 {
                 (comment?.author?.id === profile?.rareuser?.id)?
                 <div>
-                  <button onClick={() => {deleteComment(comment.id)
+                  <button style={{ marginRight: '10px'}} onClick={() => {deleteComment(comment.id)
                   .then(() => {getComments().then((data)=> setComments((data)))})}}>Delete
                   </button>
 

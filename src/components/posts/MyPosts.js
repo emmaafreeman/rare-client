@@ -36,24 +36,28 @@ export const MyPosts = () => {
                   className="post_detail_title"
                   style={{ display: "flex", justifyContent: "center" }}
                 >
-                  {post.title}
+
+                  {post?.title}
                 </h2>
+
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <img
-                    src={post.image_url}
+                    src={post?.image_url}
                     style={{ maxHeight: "350px", justifyContent: "center" }}
                     alt="post_image"
                     className="post_detail_img"
                   />
                 </div>
+
                 <p
                   className="post_detail_user"
                   style={{ fontSize: "15px", color: "gray" }}
-                >
                   Posted by RareUser: {post?.author?.user?.first_name}{" "}
-                  {post?.author?.user?.last_name} on {post.publication_date}
+                  {post?.author?.user?.last_name} on {post?.publication_date}
                 </p>
-                <p>Descriptive text here!</p>
+
+                <p>{post?.content}</p>
+
               </div>
             </>
           );
