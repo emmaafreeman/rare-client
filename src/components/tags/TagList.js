@@ -24,20 +24,21 @@ export const TagList = () => {
 
     return(
         <>
-        <div className='tags'>
-            <h2 className='tags_title'>Tags</h2>
-            <button onClick={() => history.push("/tags/create")}>
+        <div className='tags' style={{border: '1px solid lightgray', padding: '.5em 2em', margin: '-2em 6em'}}>
+            <h1 className='tags_title'>Tags</h1>
+            <button style={{ padding: '3px'}} onClick={() => history.push("/tags/create")}>
                 Create Tag
             </button>
             <ul className='tags_list'>
                 {
                 tags.map(tag => {
                     return (
-                        <li>
+                        <li style={{padding: '5px 0', textDecoration: 'none'}}>
                           {tag.label}
                           <button className='tags_edit' 
+                          style={{marginLeft: '20px', padding: '3px'}} 
                           onClick={() => {history.push(`/tags/edit/${tag.id}`)}}>Edit Tag</button>
-                          <button onClick={() => {handleDelete(tag.id)}}>Delete Tag</button>
+                          <button style={{marginLeft: '10px', padding: '3px'}} onClick={() => {handleDelete(tag.id)}}>Delete Tag</button>
                         </li>
                     )
                 })

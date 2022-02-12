@@ -35,8 +35,9 @@ export const NavBar = () => {
             
             {
                 (localStorage.getItem("rare_user_id") !== null) ?
-                    <li className="nav-item">
-                        <button className="nav-link fakeLink"
+                    <li className="nav-item navbar__item">
+                        <button className="navbar__item nav-link fakeLink"
+                            style={{ color: 'white', textDecoration: 'none'}}
                             onClick={() => {
                                 localStorage.removeItem("rare_user_id")
                                 history.push({ pathname: "/" })

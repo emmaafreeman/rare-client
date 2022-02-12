@@ -20,18 +20,18 @@ export const MyPosts = () => {
 
   return (
     <div className="myPosts">
-      {myPosts.length > 0 ? (
-        myPosts.map((post) => {
-          return (
-            <>
-              <div
-                style={{
-                  border: "1px solid lightgray",
-                  padding: ".5em 2em",
-                  margin: "-2em 6em",
-                }}
-              >
-                <h1>My Posts</h1>
+      <div
+        style={{
+          border: "1px solid lightgray",
+          padding: ".5em 2em",
+          margin: "-2em 6em",
+        }}
+      >
+        <h1>My Posts</h1>
+        {myPosts.length > 0 ? (
+          myPosts.map((post) => {
+            return (
+              <>
                 <h2
                   className="post_detail_title"
                   style={{ display: "flex", justifyContent: "center" }}
@@ -57,14 +57,13 @@ export const MyPosts = () => {
                 </p>
 
                 <p>{post?.content}</p>
-
-              </div>
-            </>
-          );
-        })
-      ) : (
-        <h3>You don't have any posts yet!</h3>
-      )}
+              </>
+            );
+          })
+        ) : (
+          <h3>You don't have any posts yet!</h3>
+        )}
+      </div>
     </div>
   );
 };

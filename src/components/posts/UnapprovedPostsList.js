@@ -11,7 +11,8 @@ export const UnapprovedPostsList = () => {
   return(
       <>
     {
-        <div>
+          <div style={{border: '1px solid lightgray', padding: '.5em 2em', margin: '-2em 6em'}}>
+          <h1>Unapproved Posts</h1>
             {
                 unapprovedPosts.length > 0 ?
                 unapprovedPosts.map(post => {
