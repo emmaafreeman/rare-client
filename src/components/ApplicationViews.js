@@ -44,9 +44,6 @@ export const ApplicationViews = () => {
             </Route>
           </RareUserProvider>
 
-          <Route exact path="/posts/unapproved">
-            <UnapprovedPostsList />
-          </Route>
         </ProfileProvider>
 
         <Route exact path="/categories">
@@ -64,6 +61,10 @@ export const ApplicationViews = () => {
         <Route exact path="/">
           <PostList />
         </Route>
+
+        <Route exact path="/posts/unapproved">
+            <UnapprovedPostsList />
+          </Route>
 
         <Route exact path="/posts/create">
           <PostForm />
