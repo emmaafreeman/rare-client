@@ -49,10 +49,10 @@ export const MyPosts = () => {
                   />
                 </div>
 
-                <p
+                <p>
                   className="post_detail_user"
                   style={{ fontSize: "15px", color: "gray" }}
-                  Posted by RareUser: {post?.author?.user?.first_name}{" "}
+                  Posted by RareUser {post?.author?.user?.first_name}{" "}
                   {post?.author?.user?.last_name} on {post?.publication_date}
                 </p>
 
